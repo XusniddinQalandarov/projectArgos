@@ -1,0 +1,35 @@
+<div
+  *ngIf="data"
+  class="bg-[#F8FAFC] p-4 rounded-lg shadow h-full flex flex-col cursor-pointer transition-all duration-200"
+  [class.border-1]="isSelected"
+  [class.border-blue-500]="isSelected"
+  [class.border-transparent]="!isSelected"
+  (click)="onCardClick()"
+>
+  <div>
+    <h3 class="text-lg font-semibold text-[#2563EB]">{{ data.name }}</h3>
+    <p class="text-[32px] font-light leading-[48px] text-[#0F172A] mt-1">
+      {{ data.totalUsers }}
+    </p>
+    <p class="text-sm font-normal text-[#94A3B8]">{{ data.usersLabel }}</p>
+  </div>
+
+  <div class="mt-2 pt-3 border-none flex-grow">
+    <div class="flex justify-between items-center text-sm mb-1 text-[#94A3B8]">
+      <span>{{ data.averageResultLabel }}</span>
+      <span class="text-[#0F172A]">{{ data.averageResultValue }}</span>
+    </div>
+    <div class="flex justify-between items-center text-sm text-[#94A3B8] mb-1">
+      <span>
+        {{ data.inProgressLabel }}
+      </span>
+      <span class="text-[#0F172A]">{{ data.inProgressValue }}</span>
+    </div>
+    <div class="flex justify-between items-center text-sm text-[#94A3B8] mb-1">
+      <span>
+        {{ data.completedLabel }}
+      </span>
+      <span class="text-[#0F172A]">{{ data.completedValue }}</span>
+    </div>
+  </div>
+</div>
