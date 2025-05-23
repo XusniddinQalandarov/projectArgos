@@ -8,6 +8,7 @@ import { MapUzbekistanComponent } from '../map-uzbekistan/map-uzbekistan.compone
   selector: 'app-omp-dashboard',
   imports: [CommonModule, RegionCardComponent, MapUzbekistanComponent],
   templateUrl: './omp-dashboard.component.html',
+  styleUrl: './omp-dashboard.componet.scss',
 })
 export class OmpDashboardComponent implements OnInit {
   cardsTop: RegionData[] = [];

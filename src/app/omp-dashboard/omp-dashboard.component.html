@@ -2,45 +2,29 @@
   class="min-h-screen w-full bg-white flex items-center justify-center p-4 overflow-y-auto"
 >
   <div class="w-full max-w-screen">
-    <div
-      class="hidden md:grid gap-4"
-      style="
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-areas:
-          'top top top top '
-          'left map map right'
-          'left map map right'
-          'left map map right'
-          'bottom bottom bottom bottom';
-      "
-    >
-      <div class="grid grid-cols-4 gap-4" style="grid-area: top">
+    <div class="hidden md:grid grid-cols-4 grid-rows-5 gap-4">
+      <div class="grid grid-cols-4 gap-4 col-span-4 row-span-1">
         @for (item of cardsTop; track item.name) {
         <app-region-card
           [data]="item"
           [isSelected]="isRegionSelected(item.regionId)"
           (regionSelected)="onRegionSelected($event)"
           class="h-full"
-        >
-        </app-region-card>
+        ></app-region-card>
         }
       </div>
-
-      <div class="grid grid-rows-3 gap-4" style="grid-area: left">
+      <div class="grid grid-rows-3 gap-4 col-span-1 row-span-3">
         @for (item of cardsLeft; track item.name) {
         <app-region-card
           [data]="item"
           [isSelected]="isRegionSelected(item.regionId)"
           (regionSelected)="onRegionSelected($event)"
           class="h-full"
-        >
-        </app-region-card>
+        ></app-region-card>
         }
       </div>
-
       <div
-        class="bg-white p-4 rounded-lg shadow border border-blue-200 flex items-center justify-center"
-        style="grid-area: map"
+        class="map col-span-2 row-span-3 bg-[#F8FAFC] p-4 rounded-lg flex items-center justify-center"
       >
         <div
           class="flex items-center justify-center h-full w-full overflow-hidden"
@@ -51,26 +35,26 @@
           ></app-map-uzbekistan>
         </div>
       </div>
-      <div class="grid grid-rows-3 gap-4" style="grid-area: right">
+
+      <div class="grid grid-rows-3 gap-4 col-span-1 row-span-3">
         @for (item of cardsRight; track item.name) {
         <app-region-card
           [data]="item"
           [isSelected]="isRegionSelected(item.regionId)"
           (regionSelected)="onRegionSelected($event)"
           class="h-full"
-        >
-        </app-region-card>
+        ></app-region-card>
         }
       </div>
-      <div class="grid grid-cols-4 gap-4" style="grid-area: bottom">
+
+      <div class="grid grid-cols-4 gap-4 col-span-4 row-span-1">
         @for (item of cardsBottom; track item.name) {
         <app-region-card
           [data]="item"
           [isSelected]="isRegionSelected(item.regionId)"
           (regionSelected)="onRegionSelected($event)"
           class="h-full"
-        >
-        </app-region-card>
+        ></app-region-card>
         }
       </div>
     </div>
@@ -84,8 +68,7 @@
         [isSelected]="isRegionSelected(item.regionId)"
         (regionSelected)="onRegionSelected($event)"
         class="h-full"
-      >
-      </app-region-card>
+      ></app-region-card>
       }
     </div>
 
@@ -98,8 +81,7 @@
         [isSelected]="isRegionSelected(item.regionId)"
         (regionSelected)="onRegionSelected($event)"
         class="h-full"
-      >
-      </app-region-card>
+      ></app-region-card>
       }
     </div>
   </div>

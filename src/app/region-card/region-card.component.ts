@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-region-card',
   imports: [CommonModule],
   templateUrl: './region-card.component.html',
+  styleUrl: './region-card.component.scss',
 })
 export class RegionCardComponent {
   @Input() data!: RegionData;
