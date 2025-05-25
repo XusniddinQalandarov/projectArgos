@@ -29,10 +29,14 @@
         <div
           class="flex items-center justify-center h-full w-full overflow-hidden"
         >
-          <app-map-uzbekistan
-            [selectedRegionId]="selectedRegionId"
-            class="max-w-full max-h-full object-contain transform"
-          ></app-map-uzbekistan>
+          <div class="dashboard-container">
+            <!-- Map - will navigate to detail page on click -->
+            <app-map-uzbekistan
+              [selectedRegionId]="selectedRegionId"
+              (regionSelected)="onMapRegionSelected($event)"
+            >
+            </app-map-uzbekistan>
+          </div>
         </div>
       </div>
 
