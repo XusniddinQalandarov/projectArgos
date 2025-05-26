@@ -2,6 +2,14 @@
   class="min-h-screen w-full bg-white flex items-center justify-center p-4 overflow-y-auto"
 >
   <div class="w-full max-w-screen">
+    @if(isLoading){
+    <div class="flex flex-col items-center justify-center min-h-[80vh]">
+      <div
+        class="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-3"
+      ></div>
+      <p class="text-gray-600">Загрузка данных...</p>
+    </div>
+    } @else {
     <div class="hidden md:grid grid-cols-4 grid-rows-5 gap-4">
       <div class="grid grid-cols-4 gap-4 col-span-4 row-span-1">
         @for (item of cardsTop; track item.name) {
@@ -30,7 +38,6 @@
           class="flex items-center justify-center h-full w-full overflow-hidden"
         >
           <div class="dashboard-container">
-            <!-- Map - will navigate to detail page on click -->
             <app-map-uzbekistan
               [selectedRegionId]="selectedRegionId"
               (regionSelected)="onMapRegionSelected($event)"
@@ -88,5 +95,6 @@
       ></app-region-card>
       }
     </div>
+    }
   </div>
 </div>
