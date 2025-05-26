@@ -80,7 +80,9 @@ export class RegionDetailComponent implements OnInit, AfterViewInit {
   closeDetail(): void {
     window.history.back();
   }
-
+  private formatNumberWithSpaces(num: number): string {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
   loadRegionData(): void {
     if (!this.regionId) return;
     this.isLoading = true;
@@ -95,16 +97,21 @@ export class RegionDetailComponent implements OnInit, AfterViewInit {
 
           this.bottomStats = [
             {
-              label: 'Количество пользователей',
-              value: this.region.totalUsers,
+              label: 'Количество\nпользователей',
+              value: this.formatNumberWithSpaces(this.region.totalUsers),
             },
-            { label: 'Дата первого входа', value: this.region.firstEntryDate },
-            { label: 'Обучаются сейчас', value: this.region.activeUsers },
+            { label: 'Дата первого\nвхода', value: this.region.firstEntryDate },
             {
-              label: 'Выдано сертификатов',
-              value: this.region.certificatesIssued,
+              label: 'Обучаются\nсейчас',
+              value: this.formatNumberWithSpaces(this.region.activeUsers),
             },
-            { label: 'Среднее время', value: this.region.averageTime },
+            {
+              label: 'Выдано\nсертификатов',
+              value: this.formatNumberWithSpaces(
+                this.region.certificatesIssued
+              ),
+            },
+            { label: 'Среднее\nвремя', value: this.region.averageTime },
           ];
 
           setTimeout(() => {
@@ -129,18 +136,50 @@ export class RegionDetailComponent implements OnInit, AfterViewInit {
       tooltip: {
         trigger: 'item',
       },
+      title: {
+        text:
+          this.region.genderDistribution.female +
+          this.region.genderDistribution.male +
+          '%',
+        subtext: 'Итого',
+        left: 'center',
+        top: 'center',
+        textStyle: {
+          fontSize: 32,
+          fontWeight: '600',
+          color: '#0B4A6F',
+        },
+        subtextStyle: {
+          fontSize: 14,
+          color: '#A8AAAE',
+        },
+        itemGap: 4,
+      },
       series: [
         {
           name: 'Пол',
           type: 'pie',
-          radius: ['40%', '70%'],
+          radius: ['40%', '80%'],
+          startAngle: -35,
           avoidLabelOverlap: false,
           label: {
-            show: false,
+            show: true,
+            position: 'inside',
+            formatter: '{d}%',
+            color: '#fff',
+            fontSize: 14,
+          },
+
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 7,
           },
           emphasis: {
             label: {
-              show: false,
+              show: true,
+              fontSize: 22,
+              fontWeight: 'bold',
             },
           },
           data: [
@@ -183,7 +222,7 @@ export class RegionDetailComponent implements OnInit, AfterViewInit {
           axisLine: {
             lineStyle: {
               width: 12,
-              color: [[1, '#E0E7FF']],
+              color: [[1, '#4077ED33']],
             },
           },
           splitLine: {
